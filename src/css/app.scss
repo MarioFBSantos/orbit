@@ -1,0 +1,27 @@
+// app global css in SCSS form
+
+html {
+  color: white;
+  background-color: rgb(31, 31, 31);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #b3b3b3;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #585858;
+  border-radius: 90px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
