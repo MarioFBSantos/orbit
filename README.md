@@ -4,7 +4,7 @@
 
 # Escala
 
-- A escala deste projeto será de 1/10000, neste momento a escala ainda não está acertiva.
+- A escala deste projeto será de 1/10000, neste momento a escala ainda não está assertiva.
 
 # Orbitas
 
