@@ -54,6 +54,7 @@
 - Implementar todos os planetas
 - Câmera livre
 - Velocidade real de todos os astros
+- Movimentos de translação
 
 # Licenças
 
