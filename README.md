@@ -8,7 +8,7 @@
 
 # Iluminação
 
-- A iluminação dos astros, está sendo feita pelo sol, existe uma fonte de emissão de luz dentro do modelo 3d do sol
+- A iluminação dos corpos selestes, está sendo feita pelo sol, existe uma fonte de emissão de luz dentro do modelo 3d do sol
 
 # Orbitas
 
