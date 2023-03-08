@@ -6,6 +6,10 @@
 
 - A escala deste projeto será de 1/10000, neste momento a escala ainda não está assertiva.
 
+# Iluminação
+
+- A iluminação dos astros, está sendo feita pelo sol, existe uma fonte de emissão de luz dentro do modelo 3d do sol
+
 # Orbitas
 
 - A orbita da terra em relação ao sol está sendo definida nesta parte.
