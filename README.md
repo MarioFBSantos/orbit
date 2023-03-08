@@ -16,12 +16,9 @@
 - - Foi utilizada a biblioteca SunCalc para auxiliar na posição da terra e calculo da velocidade.
 - - Da para verificar a posição e velocidade da terra pelo console do navegador
 
-<code>
-  const date = new Date();
+<code>const date = new Date();
   const { azimuth, altitude } = SunCalc.getPosition(date, 0, 0);
   const distance = 150 * Math.cos(altitude);
-
-  // Atualiza a posição da Terra em relação ao Sol
   earth.position.setFromSphericalCoords(
     distance,
     azimuth - Math.PI / 2,
@@ -31,7 +28,6 @@
 
 - A orbita da lua em relação a terra, está estatica, pretendo calcular a orbita dela também.
 
-- 
 
 # Posições
 
