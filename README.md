@@ -50,3 +50,7 @@
 - Implementar todos os planetas
 - Câmera livre
 - Velocidade real de todos os astros
+
+# Licenças
+
+- https://github.com/MarioFBSantos/orbit/tree/master/public/images Em cada pasta, contém a licença de cada asset em 3D, não modelei nenhum asset e não pretendo utilizar os modelos 3d para intuitos financeiros.
