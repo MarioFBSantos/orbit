@@ -129,7 +129,7 @@ function updateEarthPosition() {
   earthOrbit.lookAt(earth.position);
 
   if (earth.children[0]) {
-    const moonDistance = 30;
+    const moonDistance = 800;
 
     const date = new Date();
     const { azimuth, altitude } = SunCalc.getPosition(
