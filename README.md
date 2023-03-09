@@ -4,6 +4,8 @@
 
 - Qualquer bug encontrado, gerar um Issue https://github.com/MarioFBSantos/orbit/issues
 
+- Toda a lógica e funções você encotrará em https://github.com/MarioFBSantos/orbit/blob/master/src/pages/IndexPage.vue
+
 # Escala
 
 - A escala deste projeto será de 1/10000, neste momento a escala ainda não está assertiva.
@@ -53,6 +55,7 @@
 - Câmera livre
 - Velocidade real de todos os astros
 - Movimentos de translação
+- Componentizar funções
 
 # Licenças
 
