@@ -18,7 +18,6 @@
 
 - A orbita da terra em relação ao sol está sendo definida nesta parte.
 - - Foi utilizada a biblioteca SunCalc para auxiliar na posição da terra e calculo da velocidade.
-- - Da para verificar a posição e velocidade da terra pelo console do navegador
 
 - <code>   const moonPhi = ((90 - (moonPos.altitude * 180) / Math.PI) * Math.PI) / 180;
   const moonTheta = (((moonPos.azimuth * 180) / Math.PI - 90) * Math.PI) / 180;
