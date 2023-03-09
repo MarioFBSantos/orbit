@@ -115,40 +115,24 @@ function updateEarthPosition() {
   if (!sun) return;
   if (!earth) return;
 
+  // Obtenha a data atual
   const date = new Date();
-  const { azimuth, altitude } = SunCalc.getPosition(date, 0, 0);
-  const distance = 150 * Math.cos(altitude);
 
-  earth.position.setFromSphericalCoords(
-    distance,
-    azimuth - Math.PI / 2,
-    altitude
-  );
+  // Calcule a posição heliocêntrica da Terra
+  const pos = SunCalc.getPosition(date, 0, 0);
+  const dist = 150; // Distância média da Terra ao Sol em milhões de km
+  const phi = ((90 - (pos.altitude * 180) / Math.PI) * Math.PI) / 180;
+  const theta = (((pos.azimuth * 180) / Math.PI - 90) * Math.PI) / 180;
+  const x = dist * Math.sin(phi) * Math.cos(theta);
+  const y = dist * Math.sin(phi) * Math.sin(theta);
+  const z = dist * Math.cos(phi);
 
+  // Atualize a posição da Terra em relação ao sol
+  earth.position.set(x, y, z);
+
+  // Atualize a posição e orientação da órbita da Terra em torno do sol
   earthOrbit.position.copy(sun.position);
   earthOrbit.lookAt(earth.position);
-
-  if (earth.children[0]) {
-    const moonDistance = 800;
-
-    const date = new Date();
-    const { azimuth, altitude } = SunCalc.getPosition(
-      date,
-      earth.position.x,
-      earth.position.y
-    );
-    const moonPosition = new THREE.Vector3().setFromSphericalCoords(
-      moonDistance,
-      azimuth - Math.PI / 2,
-      altitude
-    );
-
-    earth.children[0].position.copy(moonPosition);
-
-    console.log('sun', sun.position);
-    console.log('moon', moon.position);
-    console.log('earth', earth.position);
-  }
 }
 </script>
 
