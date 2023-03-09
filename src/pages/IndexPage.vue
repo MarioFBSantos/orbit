@@ -10,7 +10,7 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import SunCalc from 'suncalc';
 import CreditsArtists from 'src/components/creditsArtists.vue';
 
-let camera, scene, renderer, controls, earth, sun, moon, earthOrbit;
+let camera, scene, renderer, controls, earth, sun, moon, earthOrbit, moonOrbit;
 
 // const scale = 1000;
 const container = ref(null);
@@ -73,14 +73,12 @@ onMounted(() => {
       loader.load('/images/moon/moon.gltf', (gltf) => {
         moon = gltf.scene;
         moon.scale.setScalar(0.1);
-        moon.position.set(130, 0, 0);
-        if (earth) {
-          earth.add(moon);
-        } else {
-          console.error('Erro: modelo da Terra não foi carregado');
-          return;
-        }
-        console.log(moon);
+        moon.position.set(30, 0, 0);
+        moonOrbit = new THREE.Object3D();
+        moonOrbit.position.set(0, 0, 0);
+        moonOrbit.rotation.x = -Math.PI / 2;
+        moonOrbit.add(moon);
+        earth.add(moonOrbit);
       });
     });
 
@@ -114,6 +112,7 @@ function animate() {
 function updateEarthPosition() {
   if (!sun) return;
   if (!earth) return;
+  if (!moon) return;
 
   // Obtenha a data atual
   const date = new Date();
@@ -133,6 +132,30 @@ function updateEarthPosition() {
   // Atualize a posição e orientação da órbita da Terra em torno do sol
   earthOrbit.position.copy(sun.position);
   earthOrbit.lookAt(earth.position);
+
+  // Calcule a posição da Lua em relação à Terra
+  const moonPos = SunCalc.getMoonPosition(
+    date,
+    earth.position.x,
+    earth.position.y,
+    earth.position.z
+  );
+  const moonDist = 80; // Distância média da Lua à Terra em milhares de km
+  const moonPhi = ((90 - (moonPos.altitude * 180) / Math.PI) * Math.PI) / 180;
+  const moonTheta = (((moonPos.azimuth * 180) / Math.PI - 90) * Math.PI) / 180;
+  const moonX = moonDist * Math.sin(moonPhi) * Math.cos(moonTheta);
+  const moonY = moonDist * Math.sin(moonPhi) * Math.sin(moonTheta);
+  const moonZ = moonDist * Math.cos(moonPhi);
+
+  moon.position.set(moonX, moonY, moonZ);
+
+  moonOrbit.position.copy(earth.position);
+  moonOrbit.rotation.x = -Math.PI / 2;
+  earth.add(moonOrbit);
+
+  // Atualize a posição e orientação da órbita da Lua em relação à Terra
+  moonOrbit.position.copy(earth.position);
+  moonOrbit.lookAt(moon.position);
 }
 </script>
 
