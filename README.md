@@ -35,8 +35,6 @@
   const y = dist * Math.sin(phi) * Math.sin(theta);
   const z = dist * Math.cos(phi);
   </code> Posição heliocêntrica da terra
-  
-  -
 
 
 # Posições
