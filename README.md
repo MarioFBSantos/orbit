@@ -20,17 +20,21 @@
 - - Foi utilizada a biblioteca SunCalc para auxiliar na posição da terra e calculo da velocidade.
 - - Da para verificar a posição e velocidade da terra pelo console do navegador
 
-<code>const date = new Date();
-  const { azimuth, altitude } = SunCalc.getPosition(date, 0, 0);
-  const distance = 150 * Math.cos(altitude);
-  earth.position.setFromSphericalCoords(
-    distance,
-    azimuth - Math.PI / 2,
-    altitude
-  );
-</code>
-
-- A orbita da lua em relação a terra, está estatica, pretendo calcular a orbita dela também.
+- <code>   const moonPhi = ((90 - (moonPos.altitude * 180) / Math.PI) * Math.PI) / 180;
+  const moonTheta = (((moonPos.azimuth * 180) / Math.PI - 90) * Math.PI) / 180;
+  const moonX = moonDist * Math.sin(moonPhi) * Math.cos(moonTheta);
+  const moonY = moonDist * Math.sin(moonPhi) * Math.sin(moonTheta);
+  const moonZ = moonDist * Math.cos(moonPhi);
+ </code> A orbita da lua em relação a terra
+ 
+ - <code>   const pos = SunCalc.getPosition(date, 0, 0);
+  const dist = 150; // Distância média da Terra ao Sol em milhões de km
+  const phi = ((90 - (pos.altitude * 180) / Math.PI) * Math.PI) / 180;
+  const theta = (((pos.azimuth * 180) / Math.PI - 90) * Math.PI) / 180;
+  const x = dist * Math.sin(phi) * Math.cos(theta);
+  const y = dist * Math.sin(phi) * Math.sin(theta);
+  const z = dist * Math.cos(phi);
+  </code> Posição heliocêntrica da terra
 
 
 # Posições
