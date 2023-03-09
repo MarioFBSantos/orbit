@@ -2,7 +2,7 @@
 
 - Esse projeto tem intuito de criar um exemplo de Three.Js em Vue 3 Script Setup (Composition API), já que não há exemplos na internet, então adaptei o modelo para tornar um modelo público para utilização. Além de ser um modelo, serve também como uma representação da órbita da terra em relação ao sol e da lua em relação a terra, na velocidade real. 
 
-- Qualquer bug encontrnado, gerar um Issue https://github.com/MarioFBSantos/orbit/issues
+- Qualquer bug encontrado, gerar um Issue https://github.com/MarioFBSantos/orbit/issues
 
 # Escala
 
