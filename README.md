@@ -56,6 +56,7 @@
 - Velocidade real de todos os astros
 - Movimentos de translação
 - Componentizar funções
+- Comportamento gravitacional que um corpo celeste exerce pelo o outro
 
 # Licenças
 
