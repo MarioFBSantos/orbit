@@ -12,12 +12,10 @@ import CreditsArtists from 'src/components/creditsArtists.vue';
 
 let camera, scene, renderer, controls, earth, sun, moon, earthOrbit, moonOrbit;
 
-// const scale = 1000;
 const container = ref(null);
 const loader = new GLTFLoader();
 
 onMounted(() => {
-  // Cria a câmera
   camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
@@ -27,17 +25,14 @@ onMounted(() => {
   camera.position.set(50, 50, 50);
   camera.lookAt(0, 0, 0);
 
-  // Cria a cena
   scene = new THREE.Scene();
 
-  // Cria o renderizador
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setClearColor(0x000000);
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-  // Cria os controles de órbita
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.dampingFactor = 0.05;
@@ -61,7 +56,6 @@ onMounted(() => {
       earth.position.set(150, 0, 0);
       sun.add(earth);
 
-      // Cria uma mesh que representa a órbita da Terra
       earthOrbit = new THREE.Line(
         new THREE.CircleGeometry(),
         new THREE.LineBasicMaterial({ color: 0xffffff })
@@ -114,33 +108,28 @@ function updateEarthPosition() {
   if (!earth) return;
   if (!moon) return;
 
-  // Obtenha a data atual
   const date = new Date();
 
-  // Calcule a posição heliocêntrica da Terra
   const pos = SunCalc.getPosition(date, 0, 0);
-  const dist = 150; // Distância média da Terra ao Sol em milhões de km
+  const dist = 150;
   const phi = ((90 - (pos.altitude * 180) / Math.PI) * Math.PI) / 180;
   const theta = (((pos.azimuth * 180) / Math.PI - 90) * Math.PI) / 180;
   const x = dist * Math.sin(phi) * Math.cos(theta);
   const y = dist * Math.sin(phi) * Math.sin(theta);
   const z = dist * Math.cos(phi);
 
-  // Atualize a posição da Terra em relação ao sol
   earth.position.set(x, y, z);
 
-  // Atualize a posição e orientação da órbita da Terra em torno do sol
   earthOrbit.position.copy(sun.position);
   earthOrbit.lookAt(earth.position);
 
-  // Calcule a posição da Lua em relação à Terra
   const moonPos = SunCalc.getMoonPosition(
     date,
     earth.position.x,
     earth.position.y,
     earth.position.z
   );
-  const moonDist = 80; // Distância média da Lua à Terra em milhares de km
+  const moonDist = 80;
   const moonPhi = ((90 - (moonPos.altitude * 180) / Math.PI) * Math.PI) / 180;
   const moonTheta = (((moonPos.azimuth * 180) / Math.PI - 90) * Math.PI) / 180;
   const moonX = moonDist * Math.sin(moonPhi) * Math.cos(moonTheta);
@@ -153,7 +142,6 @@ function updateEarthPosition() {
   moonOrbit.rotation.x = -Math.PI / 2;
   earth.add(moonOrbit);
 
-  // Atualize a posição e orientação da órbita da Lua em relação à Terra
   moonOrbit.position.copy(earth.position);
   moonOrbit.lookAt(moon.position);
 }
