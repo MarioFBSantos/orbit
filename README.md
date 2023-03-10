@@ -8,7 +8,7 @@
 
 # Escala
 
-- A escala deste projeto será de 1/10000, neste momento a escala ainda não está assertiva.
+- A escala deste projeto será de 1/10000, neste momento a escala ainda não está 100% assertiva.
 
 # Iluminação
 
