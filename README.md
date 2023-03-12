@@ -4,8 +4,7 @@
 
 - Qualquer bug encontrado, gerar um <a href="https://github.com/MarioFBSantos/orbit/issues"> Issue </a>
 
-- Toda a lógica e funções você encontrará em https://github.com/MarioFBSantos/orbit/blob/master/src/pages/IndexPage.vue
-
+- Toda a lógica e funções você encontrará <a href="https://github.com/MarioFBSantos/orbit/blob/master/src/pages/IndexPage.vue"> aqui</a>
 # Escala
 
 - A escala deste projeto será de 1/10000, neste momento a escala ainda não está 100% assertiva.
